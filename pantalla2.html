@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SECCIÓN 2 — Fundamentos y SQA</title>
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body class="pantalla-2">
+
+  <aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Sección 1</a>
+    <a href="pantalla2.html">Sección 2</a>
+    <a href="pantalla3.html">Sección 3</a>
+  </aside>
+  <div id="fondo"></div>
+
+  <header class="topbar">
+    <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
+    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+      <span class="logo-circulo">N</span>
+      <span class="marca">NOVA CODE</span>
+    </a>
+    <input class="buscar" type="search" placeholder="BUSCAR" />
+  </header>
+
+  <main>
+
+    <section id="fundamentos" class="full">
+      <div class="container center">
+        <h1 class="title-xxl">Fundamentos de la Calidad del Software</h1>
+        <p class="subtitle">
+          La gestión de la calidad comienza con la comprensión de sus fundamentos, que incluyen conceptos, métricas y estándares reconocidos internacionalmente.
+        </p>
+
+        <div class="cols-2">
+          <div class="panel">
+            <h3 class="panel-title">Conceptos clave:</h3>
+            <ul class="panel-list">
+              <li><b>Calidad del software:</b> Es el grado con el que un producto de software cumple con los requisitos funcionales y no funcionales establecidos, así como con las expectativas del usuario.</li>
+              <li><b>Atributos de calidad:</b> Algunos atributos fundamentales incluyen la confiabilidad, mantenibilidad, usabilidad, eficiencia, portabilidad y funcionalidad.</li>
+              <li><b>Métricas de Calidad:</b> Métricas de producto: defectos por módulo, complejidad ciclomática, cobertura de código.
+                    Métricas de proceso: tasa de fallos, densidad de defectos, esfuerzo en pruebas.
+                    Métricas orientadas al cliente: satisfacción del usuario, número de incidencias reportadas post-lanzamiento.
+              </li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title">Estándares de calidad:</h3>
+            <p class="panel-text">
+              <b>ISO/IEC 9126: </b>Es la evolución de ISO 9126, que proporciona guías para requisitos de calidad y evaluación. Introduce un modelo más completo que contempla:
+            </p>
+            <ul class="panel-list">
+              <li>Calidad del producto</li>
+              <li>Calidad en uso</li>
+              <li>Requisitos de calidad</li>
+              <li>Evaluación de calidad</li>
+            </ul>
+            <p class="panel-text">
+              <b>ISO/IEC 25000 (SQuaRE): </b> evolución de ISO 9126, proporciona guías para la evaluación
+              de la calidad del software en producto, uso y procesos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="full">
+      <div class="container">
+        <h1 class="title-xxl">Técnicas de Aseguramiento de la Calidad (SQA)</h1>
+        <p class="subtitle">
+          El aseguramiento de la calidad implica implementar prácticas y técnicas para evitar errores durante el proceso de desarrollo, además de detectar defectos antes de la entrega final.
+        </p>
+
+        <h3 class="table-title">Pruebas de software:</h3>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Pruebas Funcionales</b></td>
+              <td>Funcionales</td>
+              <td>Verifican que el software cumpla con lo especificado en los requisitos.</td>
+            </tr>
+            <tr>
+              <td><b>Pruebas No Funcionales</b></td>
+              <td>No funcionales</td>
+              <td>Validan atributos como rendimiento, seguridad y usabilidad.</td>
+            </tr>
+            <tr>
+              <td><b>Niveles de Prueba</b></td>
+              <td>Unitarias</td>
+              <td>Verifican componentes individuales.</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Integración</td>
+              <td>Validan la interacción entre módulos.</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Sistema</td>
+              <td>Evalúan el software completo.</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Aceptación</td>
+              <td>Realizadas por el cliente o usuarios finales.</td>
+            </tr>
+            <tr>
+              <td><b>Técnicas de Prueba</b></td>
+              <td>Caja blanca</td>
+              <td>Revisan el código internamente.</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Caja negra</td>
+              <td>Evalúan entradas y salidas sin ver el código.</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Basadas en experiencia</td>
+              <td>Dependen de la intuición y experiencia de los probadores.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="full">
+      <div class="container">
+        <h1 class="title-xxl">Herramientas de Calidad del Software</h1>
+        <p>Para apoyar todas estas prácticas, existen herramientas que automatizan y facilitan la gestión de la calidad a lo largo del ciclo de vida del software.</p>
+        <p>Herramientas de Gestión de Pruebas
+        •Permiten planificar, diseñar, ejecutar y hacer seguimiento a las pruebas.
+        Herramientas de Seguimiento de Defectos (Bug Tracking)
+        •Registran, priorizan, asignan y hacen seguimiento de errores encontrados en el software.
+        Herramientas de Análisis de Calidad
+        •Analizan código fuente para detectar problemas como errores de seguridad, duplicación de código o baja mantenibilidad.
+        Herramientas de Integración Continua y Automatización
+        •Permiten integrar pruebas automáticas dentro de un flujo de desarrollo ágil y continuo
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+  </script>
+</body>
+</html>

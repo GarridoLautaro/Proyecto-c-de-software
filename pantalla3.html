@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SECCIÓN 3 — SDLC y Comparativa</title>
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body class="pantalla-3">
+
+  <aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Sección 1</a>
+    <a href="pantalla2.html">Sección 2</a>
+    <a href="pantalla3.html">Sección 3</a>
+  </aside>
+  <div id="fondo"></div>
+
+  <header class="topbar">
+    <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
+    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+      <span class="logo-circulo">N</span>
+      <span class="marca">NOVA CODE</span>
+    </a>
+    <input class="buscar" type="search" placeholder="BUSCAR" />
+  </header>
+
+  <main>
+
+    <section class="full">
+      <div class="container">
+        <h1 class="title-xxl">El Ciclo de Vida del Desarrollo de Software (SDLC)</h1>
+        <p class="subtitle">
+          El SDLC (Software Development Life Cycle) es un marco estructurado que define las etapas necesarias para desarrollar un sistema de software, desde la idea inicial hasta su mantenimiento o retiro. Su propósito es garantizar un desarrollo ordenado, controlado y de calidad.
+        </p>
+      </div>
+    </section>
+
+    <section class="full">
+      <div class="container">
+        <h2 class="title-lg">Etapas principales del SDLC:</h2>
+        <div class="lista lista-ancha">
+          <p> <b>Recolección de Requisitos:</b> Identificación y documentación de las necesidades del cliente o usuario final.</p>
+          <p> <b>Análisis:</b> Evaluación de los requisitos recopilados para detectar errores, conflictos o ambigüedades.</p>
+          <p> <b>Diseño</b>Definición de la arquitectura del sistema, interfaces, modelos de datos y estructuras clave.</p>
+          <p> <b>Implantación:</b>Desarrollo del software según el diseño aprobado, utilizando lenguajes de programación adecuados.</p>
+          <p> <b>Pruebas</b>Verificación y validación del sistema para asegurar que cumple los requisitos funcionales y no funcionales.</p>
+          <p> <b>Despliegue</b>Instalación del sistema en el entorno del cliente o producción, listo para su uso.</p>
+          <p> <b>Mantenimiento</b>Corrección de errores, mejoras, actualizaciones y soporte continuo después de la entrega.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="full">
+      <div class="container">
+        <h2 class="title-lg">Tabla comparativa</h2>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Modelo</th><th>Descripción</th><th>✅ Ventajas</th><th>⚠ Desventajas</th><th>📌 Cuándo usarlo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Cascada</b></td>
+              <td>Fases secuenciales: análisis → diseño → implementación → pruebas → despliegue → mantenimiento.</td>
+              <td>Estructurado y documentado; fácil de gestionar.</td>
+              <td>Rigidez ante cambios; entregas tardías.</td>
+              <td>Requisitos claros y estables.</td>
+            </tr>
+            <tr>
+              <td><b>V</b></td>
+              <td>Verificación/validación asociada a cada fase.</td>
+              <td>Mayor control de calidad; fallos detectados antes.</td>
+              <td>Rígido; costoso modificar tarde.</td>
+              <td>Dominios críticos (médico, defensa, aeronáutica).</td>
+            </tr>
+            <tr>
+              <td><b>Iterativo</b></td>
+              <td>Ciclos sucesivos con revisión y mejora.</td>
+              <td>Feedback constante; reduce riesgos.</td>
+              <td>Más tiempo/recursos; requiere buena gestión de cambios.</td>
+              <td>Requisitos cambiantes o poco definidos.</td>
+            </tr>
+            <tr>
+              <td><b>Incremental</b></td>
+              <td>Módulos con incrementos funcionales.</td>
+              <td>Entregas tempranas; prioriza valor.</td>
+              <td>Integración compleja si se diseña mal.</td>
+              <td>Resultados rápidos y escalables.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="agiles" class="full">
+      <div class="container">
+        <h2 class="seccion-titulo">📌 Sección: Modelos Tradicionales</h2>
+        <p class="texto">
+          Los modelos tradicionales describen cómo se aplican las etapas del SDLC en la práctica. A continuación, se presentan los más conocidos:
+        </p>
+        <ul class="lista-parrafos">
+          <li><b>Modelo en Cascada:</b>Ventajas:
+	        •Sencillo y estructurado
+	        •Fácil de aplicar en proyectos bien definidos
+	        •Ideal para equipos con poca experiencia en gestión de proyectos
+          Desventajas:
+	        •Muy rígido ante cambios
+	        •Los errores se detectan tarde (normalmente en las pruebas)
+	        •Poco enfoque en retroalimentación continua
+          Cuándo usarlo:
+	        •Proyectos pequeños, de bajo riesgo y con requisitos fijos desde el inicio.
+          </li>
+          <li><b>Modelo en V:</b>Extiende el modelo en cascada relacionando cada fase de desarrollo con una fase correspondiente de pruebas.
+          Ventajas:
+          	•Mayor control de calidad mediante validación continua
+          	•Fuerte trazabilidad entre fases
+          	•Estructura clara para pruebas rigurosas
+          Desventajas:
+          	•Similar rigidez al modelo en cascada
+          	•Poco flexible ante cambios una vez iniciadas las fases
+          Cuándo usarlo:
+          	•Proyectos críticos como sistemas médicos, aeronáuticos o militares, donde la fiabilidad es clave.
+          </li>
+          <li><b>Modelo Iterativo e Incremental:</b>El desarrollo se realiza en módulos o versiones funcionales parciales, que se mejoran de forma continua.
+          Ventajas:
+          	•Entregas parciales desde el inicio
+          	•Adaptable a cambios de requisitos
+          	•Mejora continua basada en retroalimentación del usuario
+          Desventajas:
+          	•Mayor necesidad de coordinación y gestión
+          	•Puede ser complejo en proyectos grandes sin buena planificación
+          Cuándo usarlo:
+          	•Proyectos con alta incertidumbre, requisitos cambiantes o necesidad de mostrar avances frecuentes al cliente.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="agiles" class="full">
+      <div class="container">
+        <h2 class="seccion-titulo">📌 Sección: Metodologías Ágiles</h2>
+        <div class="col3">
+          <div class="tarjeta-agil">
+            <h3 class="agil-titulo">◆ Scrum</h3>
+            <p class="agil-texto">
+              <b>Principios:</b> sprints, inspección y adaptación continua.<br>
+              <b>Roles:</b> Product Owner, Scrum Master, Equipo de Desarrollo.<br>
+              <b>Ceremonias:</b> Planning, Daily, Review, Retrospective.<br>
+              <b>Artefactos:</b> Product Backlog, Sprint Backlog, Incremento.
+            </p>
+          </div>
+          <div class="tarjeta-agil">
+            <h3 class="agil-titulo">◆ Kanban</h3>
+            <p class="agil-texto">
+              <b>Principios:</b> visualización del flujo, límite de WIP, mejora continua.<br>
+              <b>Roles:</b> sin roles fijos; autoorganización del equipo.<br>
+              <b>Artefactos:</b> Tablero con columnas (Por hacer, En progreso, Hecho).<br>
+              <b>Ventaja:</b> útil con cambios constantes de prioridades.
+            </p>
+          </div>
+          <div class="tarjeta-agil">
+            <h3 class="agil-titulo">◆ XP (Extreme Programming)</h3>
+            <p class="agil-texto">
+              <b>Principios:</b> comunicación, simplicidad, feedback, coraje, respeto.<br>
+              <b>Prácticas:</b> parejas, CI, TDD, entregas frecuentes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+  </script>
+</body>
+</html>
