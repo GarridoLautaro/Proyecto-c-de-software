@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SECCIÓN 5 — Glosario y FAQ</title>
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body class="pantalla-5">
+
+<aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Sección 1</a>
+    <a href="pantalla2.html">Sección 2</a>
+    <a href="pantalla3.html">Sección 3</a>
+    <a href="pantalla4.html">Sección 4</a>
+    <a href="pantalla5.html">Sección 5</a>
+</aside>
+<div id="fondo"></div>
+
+<header class="topbar">
+    <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
+    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+        <span class="logo-circulo">N</span>
+        <span class="marca">NOVA CODE</span>
+    </a>
+    <input class="buscar" type="search" placeholder="BUSCAR" />
+</header>
+<main>
+
+<section class="full">
+    <div class="container-wide">
+        <h1 class="title-xxl"> Glosario de Calidad y Desarrollo de Software</h1>    
+        <h3 class="glosario-bloque">Recursos y Aprendizaje: Calidad y Desarrollo de Software</h3>
+        <ul class="glosario-list">
+            <li><b>QA (Quality Assurance):</b> proceso sistemático para garantizar la calidad del software durante su desarrollo.</li>
+            <li><b>Testing:</b> actividad que evalúa si el software cumple con los requisitos especificados.</li>
+            <li><b>Bug / Defecto:</b> error en el software que causa resultados incorrectos o fallos.</li>
+            <li><b>CI/CD:</b> integración y entrega continua; automatiza la compilación, prueba y despliegue del software.</li>
+            <li><b>Refactorización:</b> mejorar el código existente sin cambiar su comportamiento.</li>
+            <li><b>Revisión de código (Code Review):</b> evaluación del código por parte de otros desarrolladores para asegurar calidad y buenas prácticas.</li>
+            <li><b>Unit Testing (Pruebas Unitarias):</b> pruebas que verifican el comportamiento de pequeñas partes individuales del código.</li>
+            <li><b>TDD (Test Driven Development):</b> desarrollo guiado por pruebas: primero se escriben las pruebas, luego el código.</li>
+            <li><b>Métricas de Calidad:</b> indicadores que ayudan a medir aspectos como cobertura de pruebas, complejidad o cantidad de defectos.</li>
+            <li><b>DevOps:</b> cultura que integra desarrollo y operaciones para mejorar la entrega continua y automatizada del software.</li>
+        </ul>
+    </div>
+</section>
+<section class="full">
+    <div class="container-wide">
+        <h1 class="title-xxl">Preguntas Frecuentes</h1>
+        <ul class="faq-list">
+            <li>
+                <b>¿Cuál es la diferencia entre QA y Testing?</b><br>
+                QA es un proceso más amplio que incluye todas las actividades para asegurar la calidad. El testing es parte de QA y se enfoca en detectar errores.
+            </li>
+            <li>
+                <b>¿Por qué es importante la calidad del software?</b><br>
+                Reduce errores en producción, mejora la experiencia del usuario y ahorra costos a largo plazo.
+            </li>
+            <li>
+                <b>¿Cuándo se debe empezar a probar el software?</b><br>
+                Desde las primeras etapas del desarrollo para detectar errores antes y a menor costo.
+            </li>
+            <li>
+                <b>¿Qué herramientas se usan para pruebas automatizadas?</b><br>
+                Selenium, JUnit, PyTest, Postman, Jest, entre otras.
+            </li>
+            <li>
+                <b>¿Qué es un caso de prueba?</b><br>
+                Descripción de lo que se va a probar, con pasos, datos de entrada y resultado esperado.
+            </li>
+            <li>
+                <b>¿Diferencia entre pruebas funcionales y no funcionales?</b><br>
+                Funcionales: qué hace el sistema. No funcionales: cómo lo hace (rendimiento, seguridad, usabilidad).
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="full">
+    <div class="container-wide">
+        <h1 class="title-xxl">Sitios web útiles</h1>
+        <ul class="links-list">
+            <li>Ministry of Testing — www.ministryoftesting.com</li>
+            <li>Software Testing Help — www.softwaretestinghelp.com</li>
+        </ul>
+    </div>
+</section>
+
+</main>
+
+<script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+</script>
+</body>
+</html>
