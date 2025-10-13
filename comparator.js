@@ -209,3 +209,49 @@ btnClear.addEventListener("click", () => {
   btnCompare.disabled = true;
   resultBox.hidden = true;
 });
+
+/* ===== US-19: Encuesta de Preferencias ===== */
+(function(){
+  const form = document.getElementById('survey-form');
+  if (!form) return;
+
+  const selReqs   = document.getElementById('q-reqs');
+  const selTrabajo= document.getElementById('q-trabajo');
+  const loading   = document.getElementById('survey-loading');
+  const suggestEl = document.getElementById('survey-suggest');
+
+  // Reglas simples basadas en las opciones de la placa:
+  // - Requisitos cambiantes + iteraciones => Scrum
+  // - Requisitos cambiantes + flujo        => Kanban
+  // - Requisitos cambiantes + lotes        => XP
+  // - Requisitos estables   + lotes        => Cascada
+  // - Requisitos estables   + iteraciones  => Incremental
+  // - Requisitos estables   + flujo        => Iterativo
+  function sugerir(reqs, trabajo){
+    if (reqs==='cambiantes' && trabajo==='iteraciones') return 'Scrum';
+    if (reqs==='cambiantes' && trabajo==='flujo')       return 'Kanban';
+    if (reqs==='cambiantes' && trabajo==='lotes')       return 'XP (Extreme Programming)';
+    if (reqs==='estables'   && trabajo==='lotes')       return 'Cascada';
+    if (reqs==='estables'   && trabajo==='iteraciones') return 'Incremental';
+    if (reqs==='estables'   && trabajo==='flujo')       return 'Iterativo';
+    return 'Scrum';
+  }
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    if (!selReqs.value || !selTrabajo.value) {
+      alert('Completá ambas opciones para continuar.');
+      return;
+    }
+    // Loader breve para feedback visual
+    loading.hidden = false;
+    suggestEl.textContent = '……';
+    setTimeout(()=>{
+      const metodo = sugerir(selReqs.value, selTrabajo.value);
+      suggestEl.textContent = metodo;
+      loading.hidden = true;
+      // Llevar el foco visual a la sugerencia
+      document.getElementById('survey-result')?.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 700);
+  });
+})();

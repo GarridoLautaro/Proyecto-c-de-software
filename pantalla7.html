@@ -85,6 +85,46 @@
         </div>
       </div>
     </section>
+
+    <!-- ====== US-19: Encuesta de Preferencias (pantalla completa) ====== -->
+<section id="encuesta" class="full survey">
+  <div class="survey-wrap">
+    <div class="survey-card" role="form" aria-labelledby="encuesta-title">
+      <div class="survey-head">
+        <h2 id="encuesta-title">Preferencias Metodológicas</h2>
+      </div>
+
+      <form id="survey-form" class="survey-form" novalidate>
+        <label class="sr-only" for="q-reqs">Estabilidad de requisitos</label>
+        <select id="q-reqs" required>
+          <option value="" selected disabled>Opción</option>
+          <option value="cambiantes">Requisitos cambiantes</option>
+          <option value="estables">Requisitos estables</option>
+        </select>
+
+        <label class="sr-only" for="q-trabajo">Tipo de entrega/trabajo</label>
+        <select id="q-trabajo" required>
+          <option value="" selected disabled>Opción</option>
+          <option value="iteraciones">Trabajo por iteraciones / sprints</option>
+          <option value="flujo">Flujo continuo (tickets/incidencias)</option>
+          <option value="lotes">Entregas grandes en etapas</option>
+        </select>
+
+        <button type="submit" class="survey-submit">Enviar</button>
+
+        <div class="survey-loading" id="survey-loading" aria-live="polite" hidden>
+          <span class="dot"></span> Loading…
+        </div>
+      </form>
+    </div>
+
+    <p class="survey-result" id="survey-result">
+      <span>Metodología sugerida:</span>
+      <strong id="survey-suggest">……</strong>
+    </p>
+  </div>
+</section>
+
   </main>
 
   <!-- JS global mini del menú -->
