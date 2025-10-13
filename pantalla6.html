@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SECCIÓN 6 — NOVA CODE</title>
+  <link rel="stylesheet" href="style.css?v=8" />
+</head>
+<body class="pantalla-6">
+
+  <aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Sección 1</a>
+    <a href="pantalla2.html">Sección 2</a>
+    <a href="pantalla3.html">Sección 3</a>
+    <a href="pantalla4.html">Sección 4</a>
+    <a href="pantalla5.html">Sección 5</a>
+    <a href="pantalla6.html">Sección 6</a>
+    <a href="pantalla7.html">Sección 7</a>
+  </aside>
+  <div id="fondo"></div>
+
+  <header class="topbar">
+    <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
+    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+      <span class="logo-circulo">N</span>
+      <span class="marca">NOVA CODE</span>
+    </a>
+    <input class="buscar" type="search" placeholder="BUSCAR" />
+  </header>
+
+  <main>
+
+    <!-- ====== About / Nova Code ====== -->
+    <section id="about" class="about-hero full">
+      <div class="about-wrap">
+        <div class="brand-line">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <h1 class="brand-name">NOVA CODE</h1>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-col">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+              Somos un equipo apasionado por la calidad del software y las metodologías
+              de desarrollo ágil y tradicional. Nuestra motivación es compartir conocimiento
+              de manera clara y accesible para que estudiantes, profesionales y empresas
+              puedan implementar buenas prácticas en sus proyectos tecnológicos.
+            </p>
+          </div>
+
+          <div class="about-col">
+            <h2>Nuestra misión</h2>
+            <p>
+              Impulsar la creación de software confiable, eficiente y alineado a las
+              necesidades del usuario, promoviendo estándares internacionales de calidad y
+              fomentando el aprendizaje continuo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Visión + Equipo + Claim ====== -->
+    <section id="vision-equipo" class="about-vision full">
+      <div class="about-wrap">
+        <div class="brand-line">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <h1 class="brand-name">NOVA CODE</h1>
+        </div>
+
+        <div class="vision-grid">
+          <div class="about-col">
+            <h2>Nuestra visión</h2>
+            <p>
+              Convertirnos en un referente educativo en el área de gestión de
+              calidad y desarrollo de software, brindando recursos prácticos,
+              ejercicios, y ejemplos reales que fortalezcan la formación profesional.
+            </p>
+          </div>
+
+          <div class="about-col">
+            <h2>Nuestro equipo</h2>
+            <p>
+              Especialistas en desarrollo de software: con experiencia en modelos
+              tradicionales y ágiles.<br>
+              Profesionales en gestión de calidad: enfocados en normas como ISO/IEC 25010
+              y metodologías de aseguramiento.<br>
+              Mentores y docentes: comprometidos con transmitir conocimientos de forma
+              didáctica y práctica.
+            </p>
+          </div>
+        </div>
+
+        <div class="vision-divider" aria-hidden="true"></div>
+
+        <p class="vision-claim">
+          <span class="emoji" aria-hidden="true">👉</span>
+          <b>Creemos que la calidad no es un lujo, sino un requisito fundamental para el éxito de cualquier proyecto tecnológico.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====== Formulario de Contacto (pantalla completa, sin tarjeta blanca) ====== -->
+    <section id="contacto" class="contact-full full">
+      <div class="contact-wrap">
+        <h1 class="brand-name contact-title">Formulario de Contacto</h1>
+
+        <form class="contact-form" action="#" method="post" novalidate>
+          <label for="nombre">Nombre completo <span class="req">*</span></label>
+          <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" />
+
+          <label for="correo">Correo electrónico <span class="req">*</span></label>
+          <input id="correo" name="correo" type="email" required placeholder="tucorreo@dominio.com" />
+
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto">
+            <option>Consulta</option>
+            <option>Soporte</option>
+            <option>Propuesta</option>
+          </select>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..."></textarea>
+
+          <label class="chk">
+            <input type="checkbox" id="terminos" required />
+            <span>Acepto los términos y condiciones / política de privacidad</span>
+          </label>
+
+          <button type="submit" class="btn-enviar">Enviar mensaje</button>
+
+          <p class="form-note">
+            Gracias por tu mensaje, te responderemos pronto <span class="ok" aria-hidden="true">✔</span>
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+  </script>
+<script src="buscador.js"></script>
+</body>
+</html>

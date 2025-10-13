@@ -1,16 +1,24 @@
-:root{ 
-  --bg-top:    #F3D9C7;
+:root {
+  --bg-top: #F3D9C7;
   --bg-bottom: #EED2BE;
   --blanco: #fff;
-  --negro:  #111;
-  --texto:  #1b1f2a;
-  --borde:  rgba(0,0,0,.12);
+  --negro: #111;
+  --texto: #1b1f2a;
+  --borde: rgba(0,0,0,.12);
   --borde2: rgba(0,0,0,.08);
   --overlay: rgba(0,0,0,.35);
+  --brand: #8FA6C8;
+  --topbar-h: 64px;
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
-html,body{ height:100%; }
+html, body{ height:100%; }
+
+/* ===== Fondo global y scroll-snap (una sección por pantalla) ===== */
+html{
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
 body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
   color:var(--texto);
@@ -19,71 +27,35 @@ body{
 a{ color:inherit; text-decoration:none; }
 img{ max-width:100%; display:block; }
 
-/* navbar */
+/* ================= NAVBAR (distinto para que se note) ================ */
 .topbar{
   position: sticky; top:0; z-index: 8;
   display:flex; align-items:center; gap:12px;
-  height:64px; padding:0 14px;
-  backdrop-filter: blur(4px);
+  height: var(--topbar-h); padding:0 14px;
+  background: rgba(255,255,255,.38);
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(6px);
 }
 .btn-menu{
-  background: transparent; 
-  border:0; font-size: 22px; 
-  line-height:1; 
-  cursor:pointer;
+  background: transparent; border:0; font-size: 22px; line-height:1; cursor:pointer;
 }
-.logo{ 
-  display:flex; 
-  align-items:center; 
-  gap:10px; 
-  user-select:none; 
-}
+.logo{ display:flex; align-items:center; gap:10px; user-select:none; }
 .logo-circulo{
-  width:36px; 
-  height:36px; 
-  border-radius:50%; 
-  background:var(--negro); 
-  color:var(--blanco);
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
+  width:36px; height:36px; border-radius:50%; background:var(--negro);
+  color:var(--blanco); display:flex; align-items:center; justify-content:center;
   font-weight:800;
 }
-.marca{ 
-  font-weight:700; 
-  letter-spacing:.5px; 
-}
-.buscar{
-  margin-left:auto; 
-  height:36px; 
-  padding:0 12px;
-  border-radius:10px; 
-  min-width:180px;
-}
-.puntos{ 
-  font-size:26px; 
-  cursor:pointer; 
-  padding:0 6px; 
-  user-select:none; 
-}
-.opciones{
-  position:absolute; 
-  top:56px; 
-  right:10px; 
-  background:var(--blanco);
-  border:1px solid var(--borde2); 
-  border-radius:10px; 
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  padding:8px; 
-  display:none; 
-  min-width:160px; 
-  z-index:9;
-}
-.opciones.abierto{ display:block; }
-.opciones a{ display:block;  padding:8px 10px; border-radius:8px; }
-.opciones a:hover{ background:rgba(0,0,0,.05); }
+.marca{ font-weight:700; letter-spacing:.5px; }
 
-/*  Menú lateral  */
+/* Buscador */
+.buscar{
+  margin-left:auto; height:38px; padding:0 14px; border-radius:10px;
+  min-width:220px; border:1.5px solid rgba(0,0,0,.25); background:#fff;
+}
+.buscar::placeholder{ letter-spacing:.4px; }
+.buscar:focus{ outline:none; border-color:#111; box-shadow:0 0 0 2px rgba(0,0,0,.1); }
+
+/* ================= Menú lateral ================= */
 #fondo{
   position:fixed; inset:0; background:var(--overlay);
   opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:7;
@@ -91,7 +63,7 @@ img{ max-width:100%; display:block; }
 .menu{
   position:fixed; inset:0 auto 0 0; width:260px; background:var(--blanco);
   border-right:1px solid var(--borde2); transform:translateX(-100%);
-  transition:transform .25s ease; z-index:8; padding:18px; 
+  transition:transform .25s ease; z-index:8; padding:18px;
   display:flex; flex-direction:column; gap:8px;
 }
 .menu h3{ margin-bottom:6px; }
@@ -100,84 +72,68 @@ img{ max-width:100%; display:block; }
 .menu-abierto #fondo{ opacity:1; pointer-events:auto; }
 .menu-abierto .menu{ transform:translateX(0); }
 
-/* secciones */
+/* ================= Secciones / contenedores ================= */
+/* Cada sección ocupa el alto real de la ventana (considerando barras móviles) */
 main{ width:100%; }
 .full{
-  min-height: 100vh;
+  min-height: 100svh;         /* asegura 100% de alto de viewport (móvil seguro) */
+  height: 100svh;
   width: 100%;
   display: flex;
   align-items: center;
   padding: clamp(24px, 5vw, 60px) 0;
+  background: transparent;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
-.container{
-  width: min(1200px, 92%);
-  margin-inline: auto;
-}
+.container{ width: min(1200px, 92%); margin-inline: auto; }
+.container-wide{ width: 96%; max-width: none; margin-inline: auto; text-align: center; }
 .center{ text-align: center; }
 
-/*  Tipografías/Títulos  */
-.title-xxl{ 
-  font-size: clamp(36px, 7vw, 68px); 
-  font-weight: 900; 
-  line-height: 1.05; 
-}
-.title-lg{ 
-  font-size: clamp(28px, 5vw, 42px); 
-  font-weight: 900; 
-  line-height: 1.1; 
-}
-.subtitle{
-  max-width: 1100px;
-  margin: 10px auto 16px;
-  font-size: clamp(16px, 2vw, 20px);
-  opacity: .95;
-}
+/* Tipos */
+.title-xxl{ font-size: clamp(36px, 7vw, 70px); font-weight: 900; line-height: 1.05; margin-bottom: 20px; }
+.title-lg{  font-size: clamp(28px, 5vw, 42px); font-weight: 900; line-height: 1.1; }
+.subtitle{ max-width: 1100px; margin: 10px auto 16px; font-size: clamp(16px, 2vw, 20px); opacity: .95; }
 
-/* Pantalla 1 */
-.hero{ position: relative; overflow: hidden; }
+/* ================= Pantalla 1 - Hero ================= */
+.hero{ position: relative; overflow: hidden; background: transparent; }
 .hero::before{
   content:""; position:absolute; inset:0;
   background:
-  linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
-  url('img/hero-bg.jpg') center/cover no-repeat;
+   linear-gradient(0deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
+   url('img/hero-bg.jpg') center/cover no-repeat;
   opacity: .95; pointer-events:none;
 }
 .hero-contenido{ position: relative; z-index:1; color:#fff; text-align:center; }
-.hero-titulo{ 
-  font-size: clamp(40px, 8vw, 80px); 
-  font-weight: 900; line-height:1.05; 
-  text-shadow: 0 3px 10px rgba(0,0,0,.35); 
-}
-.hero-linea{ 
-  width:160px; height:3px; background: rgba(255,255,255,.85); 
-  border-radius:999px; margin:12px auto 18px; 
-}
+.hero-titulo{ font-size: clamp(40px, 8vw, 80px); font-weight: 900; line-height:1.05; text-shadow: 0 3px 10px rgba(0,0,0,.35); }
+.hero-linea{ width:160px; height:3px; background: rgba(255,255,255,.85); border-radius:999px; margin:12px auto 18px; }
 .hero-texto{
-  max-width: 980px; margin: 0 auto 8px;
-  font-size: 25px; line-height: 1.6; color: rgba(255,255,255,.92);
+  max-width: 980px; margin: 0 auto 8px; font-size: 25px; line-height: 1.6; color: rgba(255,255,255,.92);
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
-/* box */
+/* ================= Cajas (Pantalla 1) ================= */
+.organiza-titulo{
+  font-size: clamp(40px, 7vw, 80px);
+  color:#fff; text-align:center; margin-bottom: 40px;
+  font-weight: 900; text-shadow: 0 3px 10px rgba(0,0,0,.4);
+}
 .cajas{
-  display:grid; grid-template-columns: repeat(3, 1fr);
-  gap: 26px; align-items: stretch;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px; justify-items: center;
 }
 .caja{
-  background:rgba(255,255,255,.92); border:1px solid var(--borde2); 
-  border-radius:18px; padding:26px; text-align:center; 
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.08); 
-  transition: transform .18s ease, box-shadow .18s ease;
+  background: rgba(255,255,255,.96); border:1px solid var(--borde2);
+  border-radius:22px; padding: 40px 28px; max-width: 380px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.12);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.caja:hover{ transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,.12); }
-.icono{ font-size: 44px; line-height:1; margin-bottom:10px; }
-.caja h3{ font-size: 18px; }
+.caja:hover{ transform: translateY(-4px) scale(1.03); box-shadow: 0 18px 46px rgba(0,0,0,.18); }
+.icono{ font-size: 54px; margin-bottom: 12px; line-height:1; }
+.caja h3{ font-size: 22px; margin-top: 8px; }
 
-/*  Pantalla 2:  */
-.cols-2{
-  display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px;
-}
+/* ================= Pantalla 2 ================= */
+.cols-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
 .panel{
   background: rgba(255,255,255,.92);
   border: 1px solid var(--borde2);
@@ -185,12 +141,7 @@ main{ width:100%; }
   padding: 18px 16px;
   box-shadow: 0 10px 28px rgba(0,0,0,.08);
 }
-.panel-title{ 
-  font-size: clamp(18px, 2.8vw, 26px); 
-  font-weight: 900; 
-  margin-bottom: 6px; 
-  text-align:center; 
-}
+.panel-title{ font-size: clamp(18px, 2.8vw, 26px); font-weight: 900; margin-bottom: 6px; text-align:center; }
 .panel-list{ padding-left: 18px; }
 .panel-list li{ margin: 6px 0; }
 .panel-text{ margin: 8px 0; line-height: 1.6; }
@@ -205,41 +156,11 @@ table{ border-collapse: collapse; width: 100%; }
 }
 .tabla thead th{ background: rgba(0,0,0,.08); }
 
-.seccion-titulo{ 
-  font-size: clamp(26px, 4.6vw, 40px); 
-  font-weight: 900; 
-  margin-bottom: 8px; 
-}
+.seccion-titulo{ font-size: clamp(26px, 4.6vw, 40px); font-weight: 900; margin-bottom: 8px; }
 .lista-parrafos{ margin: 10px 0 8px 18px; }
-.lista-parrafos li{
-    font-size: clamp(18px, 2.2vw, 22px); 
-  letter-spacing: .25px;               
-  font-weight: 520;                     
-  line-height: 1.65;
-}
+.lista-parrafos li{ font-size: clamp(18px, 2.2vw, 22px); letter-spacing: .25px; font-weight: 520; line-height: 1.65; }
 
-.pantalla-4 .container-wide{
-  width: 96%;
-  max-width: none;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.pantalla-4 .title-lg{
-  font-size: clamp(40px, 7vw, 70px);
-  font-weight: 900;
-  letter-spacing: .4px;
-  margin-bottom: 20px;
-}
-
-.pantalla-4 .lista-ancha p{
-  font-size: clamp(20px, 2.6vw, 26px);  /* más grande */
-  line-height: 1.7;                     /* más espacio entre líneas */
-  font-weight: 520;                     /* más grueso */
-  letter-spacing: .25px;                /* más ancho */
-  margin: 14px 0;
-}
-
+/* ================= Pantalla 3 ================= */
 .col3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-top:12px; }
 .tarjeta-agil{
   background: rgba(255,255,255,.92);
@@ -251,87 +172,226 @@ table{ border-collapse: collapse; width: 100%; }
 .agil-titulo{ font-weight: 800; margin-bottom: 6px; }
 .agil-texto{ font-size: 15px; line-height: 1.55; }
 
-.placeholder{
-  border:3px dashed rgba(80,120,200,.75); 
-  border-radius:16px; padding:22px; margin:18px auto; 
-  max-width:1050px; text-align:center;
+/* ================= Pantalla 4 ================= */
+.pantalla-4 .container-wide{ width: 96%; max-width: none; margin-inline: auto; text-align: center; }
+.pantalla-4 .title-lg{ font-size: clamp(40px, 7vw, 70px); font-weight: 900; letter-spacing: .4px; margin-bottom: 20px; }
+.pantalla-4 .lista-ancha p{
+  font-size: clamp(20px, 2.6vw, 26px); line-height: 1.7; font-weight: 520; letter-spacing: .25px; margin: 14px 0;
 }
 
+/* ================= Pantalla 5 (Glosario, FAQ, Links) ================= */
+.pantalla-5 .glosario-list{ list-style: none; padding: 0; margin-top: 16px; }
+.pantalla-5 .glosario-list li{ margin: 8px 0; text-align: left; line-height: 1.6; }
 
-.pantalla-5 .simple-nav{
-  background:#f4ddcc;
-  box-shadow:none;
+/* FAQ expandible */
+.faq-list { list-style: none; padding: 0; margin-top: 16px; }
+.faq-list details{
+  background: rgba(255,255,255,.95); border: 1px solid var(--borde2);
+  border-radius: 14px; padding: 14px 16px; margin: 10px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08); transition: transform .2s, box-shadow .2s;
 }
-.pantalla-5 .simple-nav .logo-circulo{ width:30px; height:30px; font-size:14px; }
-.pantalla-5 .simple-nav .marca{ font-size:14px; font-weight:800; letter-spacing:.6px; }
-.pantalla-5 .simple-nav .buscar{
-  border:1.4px solid #333; border-radius:8px; background:#fff;
+.faq-list details:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
+.faq-list summary{
+  font-weight: 700; font-size: clamp(18px, 2.2vw, 22px); cursor: pointer; position: relative; padding-right: 26px;
 }
+.faq-list summary::after{ content: "▼"; position: absolute; right: 4px; top: 0; font-size: 18px; transition: transform .2s; }
+.faq-list details[open] summary::after{ transform: rotate(180deg); content: "▲"; }
+.faq-list a{ display:inline-block; margin-top:6px; color:#004aad; font-weight:600; text-decoration:underline; }
 
-
-.container-wide{
-  width: 96%;
-  max-width: none;
-  margin-inline: auto;
-  text-align: center;                 
+/* enlaces útiles */
+.links-list{ list-style: none; margin-top: 16px; padding: 0; }
+.links-list li{
+  background: rgba(255,255,255,.95); border-radius: 12px; padding: 14px 16px; margin: 10px 0;
+  box-shadow: 0 5px 16px rgba(0,0,0,.08); text-align: left; line-height: 1.6;
 }
+.links-list a{ color:#0077cc; font-weight:bold; text-decoration:underline; }
+.links-list a:hover{ color:#004080; }
 
-
-.pantalla-5,
-.pantalla-5 p,
-.pantalla-5 li{
-  font-size: clamp(18px, 2.2vw, 22px); 
-  letter-spacing: .25px;               
-  font-weight: 520;                     
-  line-height: 1.65;
+/* ================= Pantalla 6 (About / Visión) ================= */
+/* Marca compartida */
+.brand-line{ display: inline-flex; align-items: center; gap: 14px; margin-bottom: clamp(20px, 4vw, 30px); }
+.brand-mark{
+  width: clamp(56px, 8vw, 72px); height: clamp(56px, 8vw, 72px); border-radius: 50%;
+  background:#fff; display:inline-flex; align-items:center; justify-content:center;
+  font-weight:800; color:#EACFBF; font-size: clamp(28px, 5vw, 40px);
+  box-shadow: 0 6px 22px rgba(0,0,0,.10);
 }
+.brand-name{ font-weight: 800; letter-spacing:.06em; line-height:1; color: var(--brand); font-size: clamp(28px, 5.4vw, 44px); }
 
-
-.pantalla-5 .title-xxl{
-  font-size: clamp(44px, 8vw, 86px);     
-  font-weight: 900;
-  letter-spacing: .4px;
+/* About hero: ocupa pantalla completa */
+.about-hero{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  height: 100svh; min-height: 100svh; padding: clamp(24px, 6vw, 60px) 0;
+  background: transparent; color: rgba(255,255,255,.95);
 }
-
-
-.pantalla-5 .glosario-bloque{
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 900;
-  margin: 16px 0 10px;
-  letter-spacing: .35px;
+.about-wrap{ width:min(1100px, 92%); margin-inline:auto; text-align:center; }
+.about-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap: clamp(24px, 5vw, 60px);
+  align-items:start; margin-top: clamp(8px, 1.8vw, 14px);
 }
-
-
-.pantalla-5 .glosario-list,
-.pantalla-5 .faq-list,
-.pantalla-5 .links-list{
-  list-style: disc;
-  list-style-position: inside;         
-  padding-left: 0;                     
-  margin: 8px auto 6px;                 
+.about-col h2{
+  font-size: clamp(22px, 3vw, 26px); font-weight: 800; margin-bottom: 10px;
+  color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.12);
 }
-
-
-.pantalla-5 .glosario-list li,
-.pantalla-5 .faq-list li,
-.pantalla-5 .links-list li{
-  margin: 10px 0;
+.about-col p{
+  font-size: clamp(16px, 2.4vw, 20px); line-height: 1.75; max-width: 48ch; margin:0 auto;
+  color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.10);
 }
 
-
-.pantalla-5 .panel{
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+/* Visión + equipo: ocupa pantalla completa, columnas lado a lado */
+.about-vision{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  height: 100svh; min-height: 100svh; padding: clamp(24px, 6vw, 60px) 0;
+  background: transparent; color: rgba(255,255,255,.95);
+}
+.vision-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap: clamp(24px, 5vw, 60px);
+  align-items:start; margin-top: clamp(6px, 1.6vw, 12px);
+}
+.about-vision .about-col h2{
+  font-size: clamp(20px, 2.6vw, 22px); font-weight: 800; margin-bottom: 8px;
+  color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.12);
+}
+.about-vision .about-col p{
+  font-size: clamp(16px, 2.3vw, 20px); line-height: 1.75; max-width: 48ch; margin:0 auto;
+  color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.10);
 }
 
+/* separador punteado + claim */
+.vision-divider{
+  width: min(520px, 70%); height: 10px; margin: clamp(18px, 3.5vw, 28px) auto clamp(12px, 2.5vw, 20px);
+  border-radius: 999px;
+  background: repeating-linear-gradient(to right, #7fa1d6 0 22px, transparent 22px 44px);
+  opacity:.9;
+}
+.vision-claim{
+  font-size: clamp(18px, 3.6vw, 34px); font-weight: 800; line-height: 1.35; color:#fff;
+  max-width: 1100px; margin: 0 auto; text-shadow: 0 2px 6px rgba(0,0,0,.16);
+}
+.vision-claim .emoji{ font-size:1.05em; margin-right:.25em; }
 
-.pantalla-5 .cols-2{ display:block; }
+/* ================= Pantalla 2 — “Herramientas”: también a pantalla completa ================= */
+.tools-hero{
+  position: relative; display:flex; align-items:center; justify-content:center;
+  height: 100svh; min-height: 100svh; padding: clamp(24px, 6vw, 70px) 0;
+  background: transparent; color:#fff;
+}
+.tools-wrap{ position:relative; z-index:1; width:min(1100px, 92%); text-align:center; }
+.tools-title{
+  font-size: clamp(42px, 8.5vw, 72px); line-height:1.05; font-weight:900; letter-spacing:.4px;
+  text-shadow: 0 3px 10px rgba(0,0,0,.35); margin-bottom:10px;
+}
+.tools-lead{ font-size: clamp(18px, 2.4vw, 26px); opacity:.95; margin-bottom:26px; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.tools-block{ margin:0 auto; max-width:920px; display:grid; gap:14px; }
+.tools-block p{
+  font-size: clamp(16px, 2.2vw, 20px); line-height:1.65;
+  background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.22);
+  border-radius: 14px; padding: 14px 16px;
+}
 
-
+/* ================= Responsive ================= */
+@media (max-width: 900px){
+  .about-grid, .vision-grid, .cols-2, .col3 { grid-template-columns: 1fr; }
+  .about-col p, .about-vision .about-col p { max-width: 60ch; }
+}
 @media (max-width: 560px){
-  .pantalla-5 .title-xxl{ font-size: clamp(36px, 9vw, 60px); }
+  .title-xxl{ font-size: clamp(36px, 9vw, 60px); }
   .pantalla-5, .pantalla-5 p, .pantalla-5 li{ font-size: clamp(17px, 4.4vw, 19px); }
 }
+/* ====== CONTACTO (pantalla completa, sin tarjeta blanca) ====== */
+.contact-full{
+  position: relative;
+  background: transparent;        /* hereda el degradado del body */
+  color: rgba(255,255,255,.95);
+}
+
+.contact-wrap{
+  width: min(560px, 92%);
+  margin-inline: auto;
+  text-align: left;
+}
+
+.contact-title{
+  display: block;
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+/* Form sin card blanca: solo campos blancos */
+.contact-form{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.contact-form label{
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(255,255,255,.95);
+}
+.contact-form .req{ color: #ffdddd; }
+
+/* Controles */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea{
+  appearance: none;
+  width: 100%;
+  border: 1.5px solid rgba(0,0,0,.18);
+  border-radius: 8px;
+  background: #ffffff;            /* campos blancos como la captura */
+  color: #222;
+  padding: 10px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06) inset;
+}
+.contact-form textarea{ resize: vertical; }
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  outline: none;
+  border-color: #1e73ea;
+  box-shadow: 0 0 0 3px rgba(30,115,234,.18);
+}
+
+/* Checkbox */
+.contact-form .chk{
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 14px; color: rgba(255,255,255,.95);
+  margin: 4px 0 6px;
+}
+.contact-form .chk input{
+  width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
+}
+
+/* Botón */
+.btn-enviar{
+  margin-top: 6px;
+  height: 44px;
+  border: 0; border-radius: 8px;
+  background: #1e73ea;
+  color: #fff; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(30,115,234,.25);
+}
+.btn-enviar:hover{ background: #1862c7; }
+
+/* Nota “gracias” */
+.form-note{
+  font-size: 13px;
+  color: rgba(255,255,255,.95);
+  margin-top: 6px;
+}
+.form-note .ok{
+  display: inline-block;
+  background: #20c35a;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+

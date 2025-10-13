@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SECCIÓN 2 — Fundamentos y SQA</title>
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body class="pantalla-2">
 
@@ -15,6 +15,8 @@
     <a href="pantalla3.html">Sección 3</a>
     <a href="pantalla4.html">Sección 4</a>
     <a href="pantalla5.html">Sección 5</a>
+    <a href="pantalla6.html">Sección 6</a>
+    <a href="pantalla7.html">Sección 7</a>
   </aside>
   <div id="fondo"></div>
 
@@ -42,16 +44,13 @@
             <ul class="panel-list">
               <li><b>Calidad del software:</b> Es el grado con el que un producto de software cumple con los requisitos funcionales y no funcionales establecidos, así como con las expectativas del usuario.</li>
               <li><b>Atributos de calidad:</b> Algunos atributos fundamentales incluyen la confiabilidad, mantenibilidad, usabilidad, eficiencia, portabilidad y funcionalidad.</li>
-              <li><b>Métricas de Calidad:</b> Métricas de producto: defectos por módulo, complejidad ciclomática, cobertura de código.
-                    Métricas de proceso: tasa de fallos, densidad de defectos, esfuerzo en pruebas.
-                    Métricas orientadas al cliente: satisfacción del usuario, número de incidencias reportadas post-lanzamiento.
-              </li>
+              <li><b>Métricas de Calidad:</b> Métricas de producto: defectos por módulo, complejidad ciclomática, cobertura de código. Métricas de proceso: tasa de fallos, densidad de defectos, esfuerzo en pruebas. Métricas orientadas al cliente: satisfacción del usuario, número de incidencias reportadas post-lanzamiento.</li>
             </ul>
           </div>
           <div class="panel">
             <h3 class="panel-title">Estándares de calidad:</h3>
             <p class="panel-text">
-              <b>ISO/IEC 9126: </b>Es la evolución de ISO 9126, que proporciona guías para requisitos de calidad y evaluación. Introduce un modelo más completo que contempla:
+              <b>ISO/IEC 9126:</b> evolución de ISO 9126, guía para requisitos y evaluación de calidad. Introduce un modelo con:
             </p>
             <ul class="panel-list">
               <li>Calidad del producto</li>
@@ -60,8 +59,7 @@
               <li>Evaluación de calidad</li>
             </ul>
             <p class="panel-text">
-              <b>ISO/IEC 25000 (SQuaRE): </b> evolución de ISO 9126, proporciona guías para la evaluación
-              de la calidad del software en producto, uso y procesos.
+              <b>ISO/IEC 25000 (SQuaRE):</b> guía para evaluar calidad de producto, uso y procesos.
             </p>
           </div>
         </div>
@@ -135,21 +133,24 @@
       </div>
     </section>
 
-    <section class="full">
-      <div class="container">
-        <h1 class="title-xxl">Herramientas de Calidad del Software</h1>
-        <p>Para apoyar todas estas prácticas, existen herramientas que automatizan y facilitan la gestión de la calidad a lo largo del ciclo de vida del software.</p>
-        <p>Herramientas de Gestión de Pruebas
-        •Permiten planificar, diseñar, ejecutar y hacer seguimiento a las pruebas.
-        Herramientas de Seguimiento de Defectos (Bug Tracking)
-        •Registran, priorizan, asignan y hacen seguimiento de errores encontrados en el software.
-        Herramientas de Análisis de Calidad
-        •Analizan código fuente para detectar problemas como errores de seguridad, duplicación de código o baja mantenibilidad.
-        Herramientas de Integración Continua y Automatización
-        •Permiten integrar pruebas automáticas dentro de un flujo de desarrollo ágil y continuo
+    <!-- === NUEVA SECCIÓN ESTILO SLIDE / HERO DE HERRAMIENTAS === -->
+    <section class="tools-hero">
+      <div class="tools-wrap">
+        <h1 class="tools-title">Herramientas de calidad</h1>
+        <p class="tools-lead">
+          Existen herramientas que ayudan a gestionar y mantener la calidad del software.
         </p>
+
+        <div class="tools-block">
+          <p><b>Gestión de pruebas:</b> permiten diseñar, ejecutar y dar seguimiento a planes de prueba. <i>Ejemplos:</i> TestLink, Zephyr, qTest.</p>
+          <p><b>Seguimiento de defectos (bug tracking):</b> ayudan a reportar, priorizar y resolver errores. <i>Ejemplos:</i> JIRA, Bugzilla, Redmine.</p>
+          <p><b>Análisis de calidad de código:</b> evalúan métricas de código, detectan malas prácticas o vulnerabilidades. <i>Ejemplos:</i> SonarQube, ESLint, PMD.</p>
+          <p><b>Integración continua y pruebas automáticas:</b> permiten automatizar pruebas en cada cambio de código. <i>Ejemplos:</i> Jenkins, GitLab CI/CD, Selenium.</p>
+        </div>
       </div>
     </section>
+    <!-- === /HERRAMIENTAS === -->
+
   </main>
 
   <script>
@@ -158,5 +159,6 @@
     abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
     fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
   </script>
+  <script src="buscador.js"></script>
 </body>
 </html>

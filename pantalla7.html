@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SECCIÓN 7 — Comparador de Metodologías</title>
+  <!-- Usa tu hoja global y suma comparator.css debajo -->
+  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="comparator.css?v=1" />
+</head>
+<body class="pantalla-7">
+
+  <!-- Menú lateral -->
+  <aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Sección 1</a>
+    <a href="pantalla2.html">Sección 2</a>
+    <a href="pantalla3.html">Sección 3</a>
+    <a href="pantalla4.html">Sección 4</a>
+    <a href="pantalla5.html">Sección 5</a>
+    <a href="pantalla6.html">Sección 6</a>
+    <a href="pantalla7.html">Sección 7</a>
+  </aside>
+  <div id="fondo"></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
+    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+      <span class="logo-circulo">N</span>
+      <span class="marca">NOVA CODE</span>
+    </a>
+    <input class="buscar" type="search" placeholder="BUSCAR" />
+  </header>
+
+  <!-- ===== Comparador (ocupa 100% de pantalla) ===== -->
+  <main>
+    <section id="comparador" class="full comparator">
+      <div class="cmp-wrap">
+        <h1 class="cmp-title">Comparador de Metodologías</h1>
+        <p class="cmp-sub">1 — Seleccione qué desea comparar</p>
+
+        <!-- Tarjetas de categoría -->
+        <div class="cmp-categories" role="list">
+          <button class="cmp-card" data-cat="agiles">
+            <img src="recursos/Metodologia-Agil-300x296.png" alt="" aria-hidden="true">
+            <span>Metodologías ágiles</span>
+          </button>
+          <button class="cmp-card" data-cat="tradicionales">
+            <img src="recursos/metodologas-de-desarrollo-de-software-tradicionales-y-emergentes-3-638.jpg" alt="" aria-hidden="true">
+            <span>Metodologías tradicionales</span>
+          </button>
+        </div>
+
+        <!-- Selector de metodologías -->
+        <div id="cmp-selector" class="cmp-selector" hidden>
+          <div class="cmp-selector-head">
+            <h2 id="cmp-cat-title">Seleccione 2 o más metodologías</h2>
+            <div class="cmp-actions">
+              <button id="cmp-clear" class="btn ghost">Limpiar</button>
+              <button id="cmp-compare" class="btn primary" disabled>Comparar</button>
+            </div>
+          </div>
+
+          <div id="cmp-checkboxes" class="cmp-checkboxes" aria-live="polite"></div>
+        </div>
+
+        <!-- Resultado: tabla comparativa -->
+        <div id="cmp-result" class="cmp-result" hidden>
+          <h3 class="cmp-result-title">Tabla comparativa</h3>
+          <div class="table-scroll">
+            <table class="cmp-table" aria-describedby="cmp-cat-title">
+              <thead>
+                <tr>
+                  <th>Modelo</th>
+                  <th>Descripción</th>
+                  <th>✔ Ventajas</th>
+                  <th>⚠ Desventajas</th>
+                  <th>📌 Cuándo usarlo</th>
+                </tr>
+              </thead>
+              <tbody id="cmp-tbody"><!-- filas dinámicas --></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS global mini del menú -->
+  <script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+        
+  </script>
+
+  <script src="comparator.js?v=1"></script>
+
+  <script src="buscador.js"></script>
+</body>
+</html>

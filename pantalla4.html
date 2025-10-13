@@ -15,6 +15,8 @@
   <a href="pantalla3.html">Sección 3</a>
   <a href="pantalla4.html">Sección 4</a>
   <a href="pantalla5.html">Sección 5</a>
+  <a href="pantalla6.html">Sección 6</a>
+  <a href="pantalla7.html">Sección 7</a>
 </aside>
 <div id="fondo"></div>
 
@@ -78,36 +80,36 @@
           <div class="panel">
             <h3 class="panel-title">Principios de Kanban</h3>
             <ol class="panel-list">
-              <li>	1.	Visualizar el trabajo: mediante tableros divididos en columnas como “Por hacer”, “En progreso” y “Hecho”. Cada tarea se representa con una tarjeta que se desplaza a lo largo del tablero.</li>
-              <li>	2.	Limitar el trabajo en curso (WIP - Work in Progress): se define un límite de tareas activas para evitar la multitarea y mejorar el enfoque.</li>
-              <li>	3.	Gestionar el flujo: se analiza y optimiza el flujo de trabajo para detectar cuellos de botella.</li>
-              <li>	4.	Hacer políticas explícitas: se definen reglas claras sobre cómo mover las tareas y en qué condiciones cambian de estado.</li>
-              <li>	5.	Mejorar continuamente: se busca la mejora constante a través de pequeños ajustes (kaizen).</li>
+              <li>	Visualizar el trabajo: mediante tableros divididos en columnas como “Por hacer”, “En progreso” y “Hecho”. Cada tarea se representa con una tarjeta que se desplaza a lo largo del tablero.</li>
+              <li>	Limitar el trabajo en curso (WIP - Work in Progress): se define un límite de tareas activas para evitar la multitarea y mejorar el enfoque.</li>
+              <li>	Gestionar el flujo: se analiza y optimiza el flujo de trabajo para detectar cuellos de botella.</li>
+              <li>	Hacer políticas explícitas: se definen reglas claras sobre cómo mover las tareas y en qué condiciones cambian de estado.</li>
+              <li>	Mejorar continuamente: se busca la mejora constante a través de pequeños ajustes (kaizen).</li>
             </ol>
           </div>
           <div class="panel">
             <h3 class="panel-title">Kanban como herramienta de gestión de procesos</h3>
             <ul class="panel-list">
-              <li>●	Aporta visibilidad inmediata del estado del trabajo.</li>
-              <li>●	Facilita la detección de bloqueos.</li>
-              <li>●	Permite una gestión flexible y adaptable.</li>
-              <li>●	Puede aplicarse a cualquier flujo de trabajo, no solo en desarrollo de software.</li>
+              <li>	Aporta visibilidad inmediata del estado del trabajo.</li>
+              <li>	Facilita la detección de bloqueos.</li>
+              <li>	Permite una gestión flexible y adaptable.</li>
+              <li>	Puede aplicarse a cualquier flujo de trabajo, no solo en desarrollo de software.</li>
             </ul>
           </div>
           <div class="panel">
             <h3 class="panel-title">Métricas comunes en Kanban</h3>
             <ul class="panel-list">
-              <li>●	Lead Time (Tiempo de entrega): tiempo total desde que se solicita una tarea hasta su finalización.</li>
-              <li>●	Cycle Time (Tiempo de ciclo): tiempo desde que una tarea empieza hasta que se completa.</li>
-              <li>●	 Throughput (Productividad): número de tareas completadas en un periodo determinado.</li>
+              <li>	Lead Time (Tiempo de entrega): tiempo total desde que se solicita una tarea hasta su finalización.</li>
+              <li>	Cycle Time (Tiempo de ciclo): tiempo desde que una tarea empieza hasta que se completa.</li>
+              <li> Throughput (Productividad): número de tareas completadas en un periodo determinado.</li>
             </ul>
           </div>
           <div class="panel">
             <h3 class="panel-title">Sugerencias de gráficos para Kanban</h3>
             <ul class="panel-list">
-              <li>●	Ejemplo de tablero Kanban</li>
-              <li>●	 Gráfico de flujo acumulativo (Cumulative Flow Diagram)</li>
-              <li>●	Gráficos de comparación de Lead Time y Cycle Time</li>
+              <li>	Ejemplo de tablero Kanban</li>
+              <li>	 Gráfico de flujo acumulativo (Cumulative Flow Diagram)</li>
+              <li>	Gráficos de comparación de Lead Time y Cycle Time</li>
             </ul>
           </div>
         </div>
@@ -116,11 +118,12 @@
 
   </main>
 
-<script>
-  const abrir = document.getElementById('abrir');
-  const fondo = document.getElementById('fondo');
-  abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
-  fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
-</script>
+  <script>
+    const abrir = document.getElementById('abrir');
+    const fondo = document.getElementById('fondo');
+    abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
+    fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
+  </script>
+  <script src="buscador.js"></script>
 </body>
 </html>

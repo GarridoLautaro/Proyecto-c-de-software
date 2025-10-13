@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SECCIÓN 1 — Gestión de la Calidad</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body class="pantalla-1">
 
@@ -15,16 +15,18 @@
     <a href="pantalla3.html">Sección 3</a>
     <a href="pantalla4.html">Sección 4</a>
     <a href="pantalla5.html">Sección 5</a>
+    <a href="pantalla6.html">Sección 6</a>
+    <a href="pantalla7.html">Sección 7</a>
   </aside>
   <div id="fondo"></div>
 
   <header class="topbar">
     <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
-    <a class="logo" href="https://mail.google.com" target="_blank" rel="noopener">
+    <a class="logo" href="#">
       <span class="logo-circulo">N</span>
       <span class="marca">NOVA CODE</span>
     </a>
-    <input class="buscar" type="search" placeholder="BUSCAR" />
+    <input id="buscador" class="buscar" type="search" placeholder="BUSCAR SECCIONES..." />
   </header>
 
   <main>
@@ -34,7 +36,7 @@
         <h1 class="hero-titulo">Gestión de software</h1>
         <div class="hero-linea"></div>
         <p class="hero-texto">
-          aprende a garantizar productos de software confiables, segurosy eficientes mediante buenas practicas, normas y herramientas de calidad.
+          Aprende a garantizar productos de software confiables, seguros y eficientes mediante buenas prácticas, normas y herramientas de calidad.
         </p>
         <p class="hero-texto">
           Procesos de Desarrollo de Software:
@@ -42,27 +44,28 @@
         </p>
         <p class="hero-texto">
           Metodologías Ágiles:
-          Descubre enfoques modernos de desarrollo como Scrum, Kanban y XP, enfocados en la colaboración, la flexibilidad y la entrega continua de valor.
+          Descubre enfoques modernos como Scrum, Kanban y XP, enfocados en la colaboración y entrega continua de valor.
         </p>
         <p class="hero-texto">
-          Recursos y Aprendizaje: Accede a materiales educativos, guías, herramientas, plantillas y cursos para fortalecer tus habilidades en desarrollo y gestión de software.
+          Recursos y Aprendizaje: Accede a materiales educativos, guías, herramientas, plantillas y cursos para fortalecer tus habilidades.
         </p>
       </div>
     </section>
 
     <section class="full">
-      <div class="container">
+      <div class="container center">
+        <h1 class="organiza-titulo">Organiza tu negocio</h1>
         <div class="cajas">
           <a class="caja" href="pantalla2.html">
-            <div class="icono" aria-hidden="true">✔</div>
+            <div class="icono">✔</div>
             <h3>Gestión de la Calidad de Software</h3>
           </a>
           <a class="caja" href="pantalla2.html#fundamentos">
-            <div class="icono" aria-hidden="true">⚙</div>
+            <div class="icono">⚙</div>
             <h3>Proceso de desarrollo de software</h3>
           </a>
           <a class="caja" href="pantalla3.html#agiles">
-            <div class="icono" aria-hidden="true">⚡</div>
+            <div class="icono">⚡</div>
             <h3>Metodologías ágiles</h3>
           </a>
         </div>
@@ -77,5 +80,6 @@
     abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
     fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
   </script>
+  <script src="buscador.js"></script>
 </body>
 </html>
