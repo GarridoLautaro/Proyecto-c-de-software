@@ -5,18 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SECCIÓN 2 — Fundamentos y SQA</title>
   <link rel="stylesheet" href="style.css?v=6">
+
+  <!-- Overrides SOLO para esta pantalla: quita scroll-snap y alto 100vh -->
+  <style>
+    /* 1) Desactiva el snap del scroll */
+    .pantalla-2 html, html { scroll-snap-type: none !important; }
+
+    /* 2) Quita el “page full height” y el snap de cada sección */
+    .pantalla-2 .full {
+      min-height: auto !important;
+      height: auto !important;
+      scroll-snap-align: none !important;
+      scroll-snap-stop: normal !important;
+      padding: 40px 0 !important; /* un poco de aire vertical */
+    }
+
+    /* 3) La sección tipo hero de herramientas también sin 100vh */
+    .pantalla-2 .tools-hero {
+      height: auto !important;
+      min-height: auto !important;
+      padding: 60px 0 !important;
+      scroll-snap-align: none !important;
+      scroll-snap-stop: normal !important;
+    }
+  </style>
 </head>
 <body class="pantalla-2">
 
   <aside id="menu" class="menu">
     <h3>Menú</h3>
-    <a href="pantalla1.html">Sección 1</a>
-    <a href="pantalla2.html">Sección 2</a>
-    <a href="pantalla3.html">Sección 3</a>
-    <a href="pantalla4.html">Sección 4</a>
-    <a href="pantalla5.html">Sección 5</a>
-    <a href="pantalla6.html">Sección 6</a>
-    <a href="pantalla7.html">Sección 7</a>
+    <a href="pantalla1.html">Inicio</a>
+    <a href="pantalla2.html">Gestión del la calidad del software</a>
+    <a href="pantalla3.html">Procesos de desarrollo de software</a>
+    <a href="pantalla4.html">Metodologías en detalle</a>
+    <a href="pantalla5.html">Recursos y aprendizaje</a>
+    <a href="pantalla6.html">Secciones adicionales</a>
+    <a href="pantalla7.html">Funcionalidad adicional Java script</a>
   </aside>
   <div id="fondo"></div>
 
@@ -133,7 +157,7 @@
       </div>
     </section>
 
-    <!-- === NUEVA SECCIÓN ESTILO SLIDE / HERO DE HERRAMIENTAS === -->
+    <!-- === HERRAMIENTAS === -->
     <section class="tools-hero">
       <div class="tools-wrap">
         <h1 class="tools-title">Herramientas de calidad</h1>

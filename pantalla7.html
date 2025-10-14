@@ -12,19 +12,19 @@
   <!-- Menú lateral -->
   <aside id="menu" class="menu">
     <h3>Menú</h3>
-    <a href="pantalla1.html">Sección 1</a>
-    <a href="pantalla2.html">Sección 2</a>
-    <a href="pantalla3.html">Sección 3</a>
-    <a href="pantalla4.html">Sección 4</a>
-    <a href="pantalla5.html">Sección 5</a>
-    <a href="pantalla6.html">Sección 6</a>
-    <a href="pantalla7.html">Sección 7</a>
+    <a href="pantalla1.html">Inicio</a>
+    <a href="pantalla2.html">Gestión del la calidad del software</a>
+    <a href="pantalla3.html">Procesos de desarrollo de software</a>
+    <a href="pantalla4.html">Metodologías en detalle</a>
+    <a href="pantalla5.html">Recursos y aprendizaje</a>
+    <a href="pantalla6.html">Secciones adicionales</a>
+    <a href="pantalla7.html">Funcionalidad adicional Java script</a>
   </aside>
   <div id="fondo"></div>
 
   <header class="topbar">
     <button id="abrir" class="btn-menu" aria-label="Abrir menú">☰</button>
-    <a class="logo" href="pantalla1.html" target="_blank" rel="noopener"> 
+    <a class="logo" href="pantalla1.html" target="_blank" rel="noopener">
       <span class="logo-circulo">N</span>
       <span class="marca">NOVA CODE</span>
     </a>
@@ -32,37 +32,36 @@
   </header>
 
   <main>
+    <!-- === Comparador (US-18) === -->
     <section id="comparador" class="full comparator">
       <div class="cmp-wrap">
         <h1 class="cmp-title">Comparador de Metodologías</h1>
         <p class="cmp-sub">1 — Seleccione qué desea comparar</p>
 
-        <!-- Tarjetas de categoría -->
         <div class="cmp-categories" role="list">
-          <button class="cmp-card" data-cat="agiles">
+          <button class="cmp-card" data-open="all">
             <img src="recursos/Metodologia-Agil-300x296.png" alt="" aria-hidden="true">
             <span>Metodologías ágiles</span>
           </button>
-          <button class="cmp-card" data-cat="tradicionales">
+          <button class="cmp-card" data-open="all">
             <img src="recursos/metodologas-de-desarrollo-de-software-tradicionales-y-emergentes-3-638.jpg" alt="" aria-hidden="true">
             <span>Metodologías tradicionales</span>
           </button>
         </div>
 
-        <!-- Selector de metodologías -->
+        <!-- ÚNICO selector combinado -->
         <div id="cmp-selector" class="cmp-selector" hidden>
           <div class="cmp-selector-head">
-            <h2 id="cmp-cat-title">Seleccione 2 o más metodologías</h2>
+            <h2 id="cmp-cat-title">Seleccione 2 o más metodologías (ágiles y/o tradicionales)</h2>
             <div class="cmp-actions">
-              <button id="cmp-clear" class="btn ghost">Limpiar</button>
-              <button id="cmp-compare" class="btn primary" disabled>Comparar</button>
+              <button id="cmp-clear" class="btn ghost" type="button">Limpiar</button>
+              <button id="cmp-compare" class="btn primary" type="button" disabled>Comparar</button>
             </div>
           </div>
-
           <div id="cmp-checkboxes" class="cmp-checkboxes" aria-live="polite"></div>
         </div>
 
-        <!-- Resultado: tabla comparativa -->
+        <!-- Resultado en UNA tabla -->
         <div id="cmp-result" class="cmp-result" hidden>
           <h3 class="cmp-result-title">Tabla comparativa</h3>
           <div class="table-scroll">
@@ -76,51 +75,66 @@
                   <th>📌 Cuándo usarlo</th>
                 </tr>
               </thead>
-              <tbody id="cmp-tbody"><!-- filas dinámicas --></tbody>
+              <tbody id="cmp-tbody"></tbody>
             </table>
           </div>
         </div>
       </div>
     </section>
 
-<section id="encuesta" class="full survey">
-  <div class="survey-wrap">
-    <div class="survey-card" role="form" aria-labelledby="encuesta-title">
-      <div class="survey-head">
-        <h2 id="encuesta-title">Preferencias Metodológicas</h2>
-      </div>
+    <!-- === US-19: Encuesta de Preferencias (ampliada) === -->
+    <section id="encuesta" class="full survey">
+      <div class="survey-wrap">
+        <div class="survey-card" role="form" aria-labelledby="encuesta-title">
+          <div class="survey-head">
+            <h2 id="encuesta-title">Preferencias Metodológicas</h2>
+          </div>
 
-      <form id="survey-form" class="survey-form" novalidate>
-        <label class="sr-only" for="q-reqs">Estabilidad de requisitos</label>
-        <select id="q-reqs" required>
-          <option value="" selected disabled>Opción</option>
-          <option value="cambiantes">Requisitos cambiantes</option>
-          <option value="estables">Requisitos estables</option>
-        </select>
+          <form id="survey-form" class="survey-form" novalidate>
+            <label class="sr-only" for="q-reqs">Estabilidad de requisitos</label>
+            <select id="q-reqs" required>
+              <option value="" selected disabled>Requisitos</option>
+              <option value="cambiantes">Requisitos cambiantes</option>
+              <option value="estables">Requisitos estables</option>
+            </select>
 
-        <label class="sr-only" for="q-trabajo">Tipo de entrega/trabajo</label>
-        <select id="q-trabajo" required>
-          <option value="" selected disabled>Opción</option>
-          <option value="iteraciones">Trabajo por iteraciones / sprints</option>
-          <option value="flujo">Flujo continuo (tickets/incidencias)</option>
-          <option value="lotes">Entregas grandes en etapas</option>
-        </select>
+            <label class="sr-only" for="q-trabajo">Tipo de entrega/trabajo</label>
+            <select id="q-trabajo" required>
+              <option value="" selected disabled>Metodología de trabajo</option>
+              <option value="iteraciones">Trabajo por iteraciones / sprints</option>
+              <option value="flujo">Flujo continuo (tickets/incidencias)</option>
+              <option value="lotes">Entregas grandes en etapas</option>
+            </select>
 
-        <button type="submit" class="survey-submit">Enviar</button>
+            <label class="sr-only" for="q-equipo">Tamaño del equipo</label>
+            <select id="q-equipo" required>
+              <option value="" selected disabled>Tamaño del equipo</option>
+              <option value="pequeno">Pequeño (1–5)</option>
+              <option value="mediano">Mediano (6–10)</option>
+              <option value="grande">Grande (11+)</option>
+            </select>
 
-        <div class="survey-loading" id="survey-loading" aria-live="polite" hidden>
-          <span class="dot"></span> Loading…
+            <label class="sr-only" for="q-proyecto">Tamaño del proyecto</label>
+            <select id="q-proyecto" required>
+              <option value="" selected disabled>Tamaño del proyecto</option>
+              <option value="pequeno">Pequeño</option>
+              <option value="mediano">Mediano</option>
+              <option value="grande">Grande / crítico</option>
+            </select>
+
+            <button type="submit" class="survey-submit">Enviar</button>
+            <div class="survey-loading" id="survey-loading" aria-live="polite" hidden>
+              <span class="dot"></span> Loading…
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
 
-    <p class="survey-result" id="survey-result">
-      <span>Metodología sugerida:</span>
-      <strong id="survey-suggest">……</strong>
-    </p>
-  </div>
-</section>
-
+        <p class="survey-result" id="survey-result">
+          <span>Metodología sugerida:</span>
+          <strong id="survey-suggest">……</strong>
+        </p>
+      </div>
+    </section>
   </main>
 
   <!-- JS global mini del menú -->
@@ -129,11 +143,9 @@
     const fondo = document.getElementById('fondo');
     abrir.addEventListener('click', ()=> document.body.classList.add('menu-abierto'));
     fondo.addEventListener('click', ()=> document.body.classList.remove('menu-abierto'));
-        
   </script>
 
-  <script src="comparator.js?v=1"></script>
-
+  <script src="comparator.js?v=3"></script>
   <script src="buscador.js"></script>
 </body>
 </html>

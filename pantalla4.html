@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -8,16 +8,16 @@
 </head>
 <body class="pantalla-4">
 
-<aside id="menu" class="menu">
-  <h3>Menú</h3>
-  <a href="pantalla1.html">Sección 1</a>
-  <a href="pantalla2.html">Sección 2</a>
-  <a href="pantalla3.html">Sección 3</a>
-  <a href="pantalla4.html">Sección 4</a>
-  <a href="pantalla5.html">Sección 5</a>
-  <a href="pantalla6.html">Sección 6</a>
-  <a href="pantalla7.html">Sección 7</a>
-</aside>
+  <aside id="menu" class="menu">
+    <h3>Menú</h3>
+    <a href="pantalla1.html">Inicio</a>
+    <a href="pantalla2.html">Gestión del la calidad del software</a>
+    <a href="pantalla3.html">Procesos de desarrollo de software</a>
+    <a href="pantalla4.html">Metodologías en detalle</a>
+    <a href="pantalla5.html">Recursos y aprendizaje</a>
+    <a href="pantalla6.html">Secciones adicionales</a>
+    <a href="pantalla7.html">Funcionalidad adicional Java script</a>
+  </aside>
 <div id="fondo"></div>
 
 <header class="topbar">
@@ -36,25 +36,78 @@
     <div class="container center">
       <h1 class="title-xxl">Scrum</h1>
       <p class="subtitle">
-        Scrum es una de las metodologías ágiles más utilizadas en el desarrollo de software. Su enfoque se basa en entregas iterativas e incrementales, permitiendo adaptar el producto a los cambios y mantener una mejora continua.
+        Scrum es una metodología ágil basada en ciclos cortos (<b>sprints</b>) para entregar valor de forma iterativa e incremental, adaptándose a cambios y fomentando la mejora continua.
       </p>
 
       <div class="cols-2">
         <div class="panel">
           <h3 class="panel-title">Roles en Scrum</h3>
           <ul class="panel-list">
-            <li><b>Product Owner (PO):</b> Representa los intereses del cliente.</li>
-            <li><b>Scrum Master (SM):</b> Asegura la aplicación correcta de Scrum.</li>
-            <li><b>Equipo de Desarrollo:</b> Entrega incrementos funcionales del producto.</li>
+            <li>
+              <b>Product Owner (PO)</b>
+              <ul>
+                <li>Maximiza el valor y prioriza el <i>Product Backlog</i>.</li>
+                <li>Define y comunica <i>Product Goal</i> y <i>Sprint Goal</i>.</li>
+                <li>Aclara requisitos y acepta el incremento.</li>
+                <li><i>Entregables:</i> historias con criterios, roadmap y métricas de valor.</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Scrum Master (SM)</b>
+              <ul>
+                <li>Facilita eventos y elimina impedimentos.</li>
+                <li>Promueve mejora continua y buena práctica de Scrum.</li>
+                <li>Protege al equipo de interrupciones externas.</li>
+                <li><i>Prácticas:</i> burndown, tablero, impediment log; acuerdos/DoD.</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Equipo de Desarrollo (Developers)</b>
+              <ul>
+                <li>Convierte backlog en incrementos funcionales.</li>
+                <li>Se autogestiona y asegura calidad (tests, CI/CD, revisiones).</li>
+                <li>Buenas prácticas: refactor, pair/mob, feature flags.</li>
+              </ul>
+            </li>
           </ul>
         </div>
+
         <div class="panel">
           <h3 class="panel-title">Eventos principales</h3>
           <ul class="panel-list">
-            <li><b>Sprint Planning:</b> selección de ítems y objetivos del sprint.</li>
-            <li><b>Daily Scrum:</b> reunión breve diaria.</li>
-            <li><b>Sprint Review:</b> revisión con stakeholders.</li>
-            <li><b>Sprint Retrospective:</b> reflexión y mejora continua.</li>
+            <li>
+              <b>Sprint Planning</b>
+              <ul>
+                <li>Define el <i>Sprint Goal</i> y qué ítems se harán.</li>
+                <li>Se prepara un plan de trabajo realista.</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Daily Scrum</b>
+              <ul>
+                <li>15 min para inspeccionar avance y ajustar el día.</li>
+                <li>Foco en bloqueos y estado del tablero.</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Sprint Review</b>
+              <ul>
+                <li>Demostración del incremento a stakeholders.</li>
+                <li>Feedback y actualización del Product Backlog.</li>
+              </ul>
+            </li>
+
+            <li>
+              <b>Sprint Retrospective</b>
+              <ul>
+                <li>Identifica mejoras en personas, procesos y herramientas.</li>
+                <li>Se acuerdan pocas acciones concretas con responsables.</li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -62,9 +115,39 @@
       <div class="panel" style="margin-top:20px;">
         <h3 class="panel-title">Artefactos en Scrum</h3>
         <ul class="panel-list">
-          <li><b>Product Backlog:</b> lista priorizada de funcionalidades.</li>
-          <li><b>Sprint Backlog:</b> tareas del sprint actual.</li>
-          <li><b>Incremento:</b> versión funcional entregable.</li>
+          <li>
+            <b>Product Backlog</b>
+            <ul>
+              <li>Lista ordenada de necesidades (historias, épicas, bugs, deudas).</li>
+              <li>Prioriza por valor, riesgo y dependencia.</li>
+              <li>Refinamientos frecuentes con DoR y criterios claros.</li>
+            </ul>
+          </li>
+
+          <li>
+            <b>Sprint Backlog</b>
+            <ul>
+              <li>Pronóstico del sprint: ítems + plan técnico visible.</li>
+              <li>Considera capacidad real y limita WIP.</li>
+            </ul>
+          </li>
+
+          <li>
+            <b>Incremento</b>
+            <ul>
+              <li>Producto funcional que cumple la <i>Definition of Done</i>.</li>
+              <li>Puede liberarse varias veces por sprint (CI/CD).</li>
+            </ul>
+          </li>
+
+          <li>
+            <b>Apoyos útiles</b>
+            <ul>
+              <li><i>Sprint Goal</i> y <i>Product Goal</i> como guías de enfoque.</li>
+              <li>Métricas de flujo (Lead/Cycle Time, WIP, Throughput, CFD).</li>
+              <li>Radiadores: burndown/burnup y tablero del sprint.</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -75,7 +158,7 @@
     <div class="container center">
       <h1 class="title-xxl">Kanban</h1>
       <p class="subtitle">
-        Kanban es un enfoque ágil enfocado en la gestión del flujo de trabajo continuo. No requiere ciclos fijos ni roles específicos.
+        Kanban es un enfoque ágil para gestionar el flujo de trabajo de forma continua. No impone sprints ni roles; se centra en visualizar, limitar WIP y optimizar el flujo.
       </p>
 
       <div class="cols-2">
@@ -86,16 +169,67 @@
             <li>Limitar el trabajo en curso (WIP).</li>
             <li>Gestionar y optimizar el flujo.</li>
             <li>Definir políticas explícitas.</li>
-            <li>Mejorar continuamente (Kaizen).</li>
+            <li>Mejora continua (Kaizen).</li>
           </ol>
         </div>
         <div class="panel">
           <h3 class="panel-title">Kanban como herramienta</h3>
           <ul class="panel-list">
             <li>Visibilidad inmediata del estado.</li>
-            <li>Detección de bloqueos.</li>
-            <li>Gestión flexible.</li>
-            <li>Aplicable a cualquier flujo de trabajo.</li>
+            <li>Detección temprana de bloqueos.</li>
+            <li>Gestión flexible y adaptable.</li>
+            <li>Aplica a cualquier flujo de trabajo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MÁS INFORMACIÓN DE KANBAN (añadido) -->
+      <div class="cols-2" style="margin-top:20px">
+        <div class="panel">
+          <h3 class="panel-title">Prácticas y políticas clave</h3>
+          <ul class="panel-list">
+            <li><b>Límites WIP:</b> por columna/equipo para evitar multitarea y colas largas.</li>
+            <li><b>Pull vs Push:</b> el trabajo se “tira” al quedar capacidad, no se empuja.</li>
+            <li><b>Clases de servicio:</b> Expedite, Fijo-fecha, Estándar; cada una con SLA y reglas.</li>
+            <li><b>Buffers/colas:</b> columnas de “espera” visibles (QA, revisión, bloqueados).</li>
+            <li><b>Políticas explícitas:</b> criterios claros de entrada/salida por columna (DoR/DoD ligeros).</li>
+            <li><b>Swimlanes:</b> carriles por prioridad/cliente/tipo de trabajo para dar foco.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Métricas para gestionar el flujo</h3>
+          <ul class="panel-list">
+            <li><b>Lead Time:</b> solicitud → entrega (experiencia del cliente).</li>
+            <li><b>Cycle Time:</b> inicio → fin del trabajo (capacidad interna).</li>
+            <li><b>Throughput:</b> ítems completados por semana/sprint.</li>
+            <li><b>CFD:</b> diagrama de flujo acumulativo para ver cuellos y estabilidad.</li>
+            <li><b>Aging WIP:</b> edad de ítems en progreso, detecta estancamientos.</li>
+            <li><b>Percentiles:</b> p50/p85 para promesas basadas en datos (SLA).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cols-2" style="margin-top:20px">
+        <div class="panel">
+          <h3 class="panel-title">Antipatrones comunes</h3>
+          <ul class="panel-list">
+            <li>WIP alto y multitarea → ciclos largos e impredecibles.</li>
+            <li>Columnas difusas (“En progreso” gigante) sin políticas claras.</li>
+            <li>Empujar urgencias constantes (todo es “expedite”).</li>
+            <li>Métricas de vanidad (solo “velocidad”) sin mirar tiempos de ciclo.</li>
+            <li>Ignorar bloqueos/esperas y no visualizarlas en el tablero.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title">Cómo empezar (paso a paso)</h3>
+          <ul class="panel-list">
+            <li>Mapea tu flujo real (de pedido a entrega) y crea columnas acordes.</li>
+            <li>Define límites WIP iniciales bajos y políticas simples por columna.</li>
+            <li>Visualiza bloqueos y revisa el tablero a diario de derecha a izquierda.</li>
+            <li>Mide Lead/Cycle Time y Throughput; ajusta WIP según datos.</li>
+            <li>Revisa el CFD semanalmente y mejora un cuello por iteración.</li>
           </ul>
         </div>
       </div>
@@ -169,4 +303,3 @@
 <script src="buscador.js"></script>
 </body>
 </html>
-

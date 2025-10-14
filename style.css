@@ -395,3 +395,196 @@ table{ border-collapse: collapse; width: 100%; }
   margin-left: 4px;
 }
 
+/* =====================================================================
+   =====================  AÑADIDOS / CORRECCIONES  =====================
+   ===================================================================== */
+
+/* —— Pantalla 3: no forzar 100vh y ordenar contenido —— */
+body.pantalla-3 main{ scroll-snap-type: none; }
+body.pantalla-3 .full{
+  min-height: auto;
+  height: auto;
+  align-items: flex-start;
+  padding: 48px 0;
+}
+
+/* Bloques informativos (modelo tradicional con imagen al lado) */
+body.pantalla-3 .lista-parrafos{
+  margin: 16px 0 0;
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr; /* texto + imagen */
+  gap: 18px;
+  list-style: none;
+  padding-left: 0;
+}
+body.pantalla-3 .lista-parrafos li{
+  font-size: clamp(16px, 2.1vw, 18px);
+  line-height: 1.65;
+}
+body.pantalla-3 .lista-parrafos li img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+
+/* Asegura que el patrón texto/imagen se muestre en pares */
+@media (max-width: 900px){
+  body.pantalla-3 .lista-parrafos{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tarjetas Ágiles: mismas alturas, centradas y prolijas */
+body.pantalla-3 .col3{
+  gap: 22px;
+  margin-top: 16px;
+}
+body.pantalla-3 .tarjeta-agil{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  height: 100%;
+}
+body.pantalla-3 .tarjeta-agil img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin-top: 6px;
+}
+
+/* Tabla comparativa: centrada con aire */
+body.pantalla-3 .tabla{
+  margin-top: 16px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--borde2);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+}
+body.pantalla-3 .title-lg{ text-align:center; }
+
+/* Imagen final centrada */
+body.pantalla-3 section.full img{
+  display: block;
+  margin: 10px auto;
+  max-width: min(1100px, 96%);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* —— Comparador / Selector de metodologías (según captura) —— */
+.cmp-selector{
+  width:min(1200px,92%);
+  margin:28px auto;
+  border:1px solid var(--borde2);
+  border-radius:18px;
+  background:rgba(255,255,255,.45);
+  backdrop-filter:blur(6px);
+  box-shadow:0 10px 26px rgba(0,0,0,.08);
+  padding:16px;
+}
+.cmp-selector-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:12px;
+  align-items:center;
+  padding:12px 8px 16px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.cmp-selector-title{
+  font-weight:900;
+  font-size:clamp(18px,2.2vw,24px);
+  text-align:left;
+}
+.cmp-actions{display:flex;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:38px;padding:0 16px;border-radius:10px;
+  font-weight:700;border:0;cursor:pointer;user-select:none;
+  transition:filter .15s,transform .03s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:#6da3ff;color:#fff}
+.btn-primary:hover{background:#5a8ef0}
+.btn-muted{background:#e9eef6;color:#334155}
+.btn-muted:hover{filter:brightness(.98)}
+
+.cmp-checkboxes{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+  margin-top:16px;
+}
+@media (max-width: 1100px){
+  .cmp-checkboxes{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width: 720px){
+  .cmp-checkboxes{ grid-template-columns:1fr; }
+}
+
+.cmp-group-title{
+  grid-column:1 / -1;
+  margin:10px 0 2px;
+  padding:8px 12px;
+  font-weight:800;letter-spacing:.25px;color:#455a64;
+  background:rgba(0,0,0,.04);
+  border-left:6px solid #b38cff;border-radius:10px;
+}
+
+.cmp-card{
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:10px;
+  align-items:flex-start;
+  min-height:110px;
+  padding:14px 16px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  transition:transform .12s, box-shadow .12s, border-color .12s;
+}
+.cmp-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.1);
+}
+.cmp-card input[type="checkbox"]{
+  width:18px;height:18px;margin-top:4px;cursor:pointer;accent-color:#7f56d9;
+}
+.cmp-card h4{font-size:1rem;margin-bottom:6px}
+.cmp-card small{display:block;line-height:1.45;color:#5d6670}
+
+
+body.pantalla-7 main { scroll-snap-type: none; }
+
+body.pantalla-7 .full{
+  scroll-snap-align: unset;
+  scroll-snap-stop: normal;
+  min-height: auto;
+  height: auto;
+  padding: 48px 0; /* aire normal */
+}
+
+/* ===== Desactivar scroll-snap SOLO en la pantalla 4 (Scrum/Kanban) ===== */
+body.pantalla-4 .full{
+  /* que las secciones NO ocupen la pantalla completa */
+  min-height: auto;
+  height: auto;
+
+  /* quitar puntos de anclaje de snap en estas secciones */
+  scroll-snap-align: unset;
+  scroll-snap-stop: normal;
+
+  /* mantener aire vertical cómodo */
+  padding: clamp(24px, 4vw, 48px) 0;
+}
+
+/* (Opcional) Si en algún navegador persiste, quita el snap en el contenedor de scroll de esta página */
+body.pantalla-4 main{
+  scroll-snap-type: none;
+}

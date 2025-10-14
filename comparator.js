@@ -121,6 +121,10 @@ const DATA = {
   ]
 };
 
+// ==== Utilidades de datos combinados ====
+const ALL_ITEMS = [...DATA.agiles, ...DATA.tradicionales];
+const MAP_BY_ID = ALL_ITEMS.reduce((acc, m) => (acc[m.id] = m, acc), {});
+
 // Elements
 const catCards = document.querySelectorAll(".cmp-card");
 const selector = document.getElementById("cmp-selector");
@@ -130,31 +134,63 @@ const btnClear = document.getElementById("cmp-clear");
 const resultBox = document.getElementById("cmp-result");
 const tbody = document.getElementById("cmp-tbody");
 const titleCat = document.getElementById("cmp-cat-title");
+const filterButtons = document.querySelectorAll(".cmp-filter .btn");
 
-let currentCat = null;
 let currentSelection = new Set();
 
 // Helpers
 const byId = id => document.getElementById(id);
 
-function renderCheckboxes(list) {
+// Render combinado con posibilidad de filtrar visualmente
+function renderCheckboxesCombined() {
   checkboxesBox.innerHTML = "";
-  list.forEach(m => {
-    const id = `chk-${m.id}`;
-    const label = document.createElement("label");
-    label.innerHTML = `
-      <input type="checkbox" id="${id}" value="${m.id}">
-      <div>
-        <b>${m.nombre}</b><br>
-        <small>${m.descripcion}</small>
-      </div>
-    `;
-    checkboxesBox.appendChild(label);
-    byId(id).addEventListener("change", e => {
-      if (e.target.checked) currentSelection.add(m.id);
-      else currentSelection.delete(m.id);
-      btnCompare.disabled = currentSelection.size < 2;
+
+  // Encabezados por grupo (solo informativos)
+  const groups = [
+    { key: "agiles", label: "Ágiles", list: DATA.agiles },
+    { key: "tradicionales", label: "Tradicionales", list: DATA.tradicionales }
+  ];
+
+  groups.forEach(g => {
+    const h = document.createElement("h3");
+    h.className = "cmp-group-title";
+    h.textContent = g.label;
+    h.dataset.cat = g.key;
+    checkboxesBox.appendChild(h);
+
+    g.list.forEach(m => {
+      const id = `chk-${m.id}`;
+      const label = document.createElement("label");
+      label.dataset.cat = g.key; // para el filtro
+      label.innerHTML = `
+        <input type="checkbox" id="${id}" value="${m.id}">
+        <div>
+          <b>${m.nombre}</b><br>
+          <small>${m.descripcion}</small>
+        </div>
+      `;
+      checkboxesBox.appendChild(label);
+
+      byId(id).addEventListener("change", e => {
+        if (e.target.checked) currentSelection.add(m.id);
+        else currentSelection.delete(m.id);
+        btnCompare.disabled = currentSelection.size < 2;
+      });
     });
+  });
+}
+
+// Aplicar filtro visual
+function applyFilter(view) {
+  // Marcar botón activo
+  filterButtons.forEach(b => b.classList.toggle("is-active", b.dataset.filter === view));
+  // Mostrar/ocultar por data-cat
+  checkboxesBox.querySelectorAll("[data-cat]").forEach(el => {
+    if (view === "all") {
+      el.style.display = "";
+    } else {
+      el.style.display = (el.dataset.cat === view) ? "" : "none";
+    }
   });
 }
 
@@ -171,36 +207,37 @@ function buildRow(m) {
   `;
 }
 
-function renderTable(catKey) {
-  const list = DATA[catKey].filter(m => currentSelection.has(m.id));
+function renderTable() {
+  const list = [...currentSelection].map(id => MAP_BY_ID[id]).filter(Boolean);
   tbody.innerHTML = list.map(buildRow).join("");
   resultBox.hidden = list.length < 2;
   if (!resultBox.hidden) {
-    // scroll hacia la tabla para enfocarla (suave)
     resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-// Eventos de selección de categoría
+// Abrir selector al tocar cualquiera de las tarjetas (ahora muestra TODAS)
 catCards.forEach(card => {
   card.addEventListener("click", () => {
-    currentCat = card.dataset.cat; // 'agiles' o 'tradicionales'
-    titleCat.textContent =
-      (currentCat === "agiles" ? "Ágiles" : "Tradicionales") + " — Seleccione 2 o más metodologías";
-    // reset
+    titleCat.textContent = "Seleccione 2 o más metodologías (ágiles y/o tradicionales)";
     currentSelection.clear();
     btnCompare.disabled = true;
     resultBox.hidden = true;
-    // render checkboxes
-    renderCheckboxes(DATA[currentCat]);
+    renderCheckboxesCombined();
     selector.hidden = false;
+    applyFilter(card.dataset.cat || "all"); // abre filtrando por la tarjeta tocada
   });
+});
+
+// Eventos del filtro
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => applyFilter(btn.dataset.filter));
 });
 
 // Acciones
 btnCompare.addEventListener("click", () => {
-  if (!currentCat || currentSelection.size < 2) return;
-  renderTable(currentCat);
+  if (currentSelection.size < 2) return;
+  renderTable();
 });
 
 btnClear.addEventListener("click", () => {
@@ -210,47 +247,77 @@ btnClear.addEventListener("click", () => {
   resultBox.hidden = true;
 });
 
-/* ===== US-19: Encuesta de Preferencias ===== */
+/* ===== US-19: Encuesta de Preferencias (ampliada con equipo y proyecto) ===== */
 (function(){
-  const form = document.getElementById('survey-form');
+  const form       = document.getElementById('survey-form');
   if (!form) return;
 
-  const selReqs   = document.getElementById('q-reqs');
-  const selTrabajo= document.getElementById('q-trabajo');
-  const loading   = document.getElementById('survey-loading');
-  const suggestEl = document.getElementById('survey-suggest');
+  const selReqs     = document.getElementById('q-reqs');
+  const selTrabajo  = document.getElementById('q-trabajo');
+  const selEquipo   = document.getElementById('q-equipo');
+  const selProyecto = document.getElementById('q-proyecto');
+  const loading     = document.getElementById('survey-loading');
+  const suggestEl   = document.getElementById('survey-suggest');
 
-  // Reglas simples basadas en las opciones de la placa:
-  // - Requisitos cambiantes + iteraciones => Scrum
-  // - Requisitos cambiantes + flujo        => Kanban
-  // - Requisitos cambiantes + lotes        => XP
-  // - Requisitos estables   + lotes        => Cascada
-  // - Requisitos estables   + iteraciones  => Incremental
-  // - Requisitos estables   + flujo        => Iterativo
-  function sugerir(reqs, trabajo){
-    if (reqs==='cambiantes' && trabajo==='iteraciones') return 'Scrum';
-    if (reqs==='cambiantes' && trabajo==='flujo')       return 'Kanban';
-    if (reqs==='cambiantes' && trabajo==='lotes')       return 'XP (Extreme Programming)';
-    if (reqs==='estables'   && trabajo==='lotes')       return 'Cascada';
-    if (reqs==='estables'   && trabajo==='iteraciones') return 'Incremental';
-    if (reqs==='estables'   && trabajo==='flujo')       return 'Iterativo';
+  // Reglas base + refinamientos por tamaño de equipo/proyecto:
+  // - Flujo  => Kanban
+  // - Iteraciones + cambiantes => Scrum (si equipo/proyecto chicos => XP)
+  // - Iteraciones + estables   => Incremental (si proyecto grande => Iterativo)
+  // - Lotes + estables         => Cascada (si proyecto/equipo grande => Modelo V)
+  // - Lotes + cambiantes       => Scrum (si equipo/proyecto chicos => XP)
+
+  function sugerir(reqs, trabajo, equipo, proyecto){
+    const ePeq = (equipo === 'pequeno');
+    const eGra = (equipo === 'grande');
+    const pPeq = (proyecto === 'pequeno');
+    const pGra = (proyecto === 'grande');
+
+    // 1) Flujo continuo
+    if (trabajo === 'flujo') return 'Kanban';
+
+    // 2) Lotes
+    if (trabajo === 'lotes') {
+      if (reqs === 'estables') {
+        if (pGra || eGra) return 'Modelo V';
+        return 'Cascada';
+      } else {
+        if (ePeq && pPeq) return 'XP (Extreme Programming)';
+        return 'Scrum';
+      }
+    }
+
+    // 3) Iteraciones / sprints
+    if (trabajo === 'iteraciones') {
+      if (reqs === 'cambiantes') {
+        if (ePeq && pPeq) return 'XP (Extreme Programming)';
+        return 'Scrum';
+      } else {
+        if (pGra) return 'Iterativo';
+        return 'Incremental';
+      }
+    }
+
+    // Fallback
     return 'Scrum';
   }
 
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
-    if (!selReqs.value || !selTrabajo.value) {
-      alert('Completá ambas opciones para continuar.');
+    if (!selReqs.value || !selTrabajo.value || !selEquipo.value || !selProyecto.value) {
+      alert('Completá las 4 opciones para continuar.');
       return;
     }
-    // Loader breve para feedback visual
     loading.hidden = false;
     suggestEl.textContent = '……';
     setTimeout(()=>{
-      const metodo = sugerir(selReqs.value, selTrabajo.value);
+      const metodo = sugerir(
+        selReqs.value,
+        selTrabajo.value,
+        selEquipo.value,
+        selProyecto.value
+      );
       suggestEl.textContent = metodo;
       loading.hidden = true;
-      // Llevar el foco visual a la sugerencia
       document.getElementById('survey-result')?.scrollIntoView({behavior:'smooth', block:'center'});
     }, 700);
   });
